@@ -30,3 +30,15 @@ exposed sensitive endpoints — strictly for **authorized and educational use on
 
 ```bash
 pip install requests
+
+Reconify
+Lightweight Security Awareness Tool
+
+Target reachable
+Status Code: 200
+Risk Level: LOW
+
+Checking common sensitive paths
+/admin not accessible
+/login not accessible
+/dashboard not accessible
