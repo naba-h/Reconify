@@ -1,19 +1,24 @@
 import requests
 
+def normalize_target(target):
+    if target.startswith("http://") or target.startswith("https://"):
+        return target
+    return "http://" + target
+
 def check_target(target):
     print("\n[+] Target Analysis Started")
     print("-" * 40)
 
+    target_url = normalize_target(target)
+
     try:
-        response = requests.get("http://" + target, timeout=5)
+        response = requests.get(target_url, timeout=5)
         status = response.status_code
 
         print(f"[+] Target Reachable: YES")
         print(f"[+] HTTP Status Code: {status}")
 
-        if status == 200:
-            risk = "LOW"
-        elif status in [401, 403]:
+        if status in [200, 401, 403]:
             risk = "LOW"
         else:
             risk = "MEDIUM"
@@ -22,8 +27,7 @@ def check_target(target):
 
         print("\n[+] Explanation:")
         print("The HTTP status code shows how the server responds.")
-        print("A 200 status means the website is accessible.")
-        print("Protected or inaccessible responses reduce risk.")
+        print("Protected or inaccessible endpoints reduce security risks.")
 
     except Exception as e:
         print("[!] Target not reachable")
@@ -43,14 +47,14 @@ def check_target(target):
 
     for path, explanation in sensitive_paths.items():
         try:
-            url = "http://" + target + path
+            url = target_url.rstrip("/") + path
             r = requests.get(url, timeout=5)
 
             if r.status_code == 200:
                 findings += 1
                 print(f"[!] Accessible: {path}")
                 print(f"    Why it matters: {explanation}")
-                print(f"    Impact: Increased risk of unauthorized access\n")
+                print("    Impact: Increased risk of unauthorized access\n")
             elif r.status_code in [401, 403]:
                 print(f"[+] Protected: {path} (Good security practice)\n")
             else:
@@ -74,5 +78,5 @@ def check_target(target):
 
 
 if __name__ == "__main__":
-    target = input("Enter target domain (example.com): ").strip()
+    target = input("Enter target (example.com or https://example.com): ").strip()
     check_target(target)

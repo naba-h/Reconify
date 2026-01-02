@@ -1,48 +1,65 @@
-# Reconify 🔍  
-### Lightweight Security Awareness Tool
+# Reconify 🔍
 
-Reconify is a beginner-friendly Python-based security awareness and reconnaissance tool.  
-It helps identify basic security exposure by checking website reachability and commonly
-exposed sensitive endpoints — strictly for **authorized and educational use only**.
+**Reconify** is a beginner-friendly, Python-based **Security Awareness & Reconnaissance Tool**.  
+It helps users understand basic website exposure by checking reachability, HTTP response behavior, and the accessibility of common sensitive paths — **strictly for educational and authorized use only**.
 
 ---
 
 ## 🚀 Features
-- Checks if a target URL is reachable
-- Displays HTTP status code
-- Assigns a basic risk level (LOW / MEDIUM / HIGH)
-- Scans common sensitive endpoints:
+
+- Accepts both domain names and full URLs (`example.com`, `http://`, `https://`)
+- Automatically normalizes the target URL
+- Checks if a target website is reachable
+- Displays HTTP status codes with simple explanations
+- Assesses a basic risk level (LOW / MEDIUM)
+- Scans common sensitive paths:
   - `/admin`
   - `/login`
   - `/dashboard`
-- Simple CLI-based interaction
-- Lightweight and easy to understand for beginners
+- Provides **educational explanations** for why exposed paths matter
+- Designed for beginners learning cybersecurity concepts
 
 ---
 
-## 🛠️ Tech Stack
-- Python 3
+## 🛠️ Requirements
+
+- Python **3.8 or higher**
 - `requests` library
 
----
-
-## 📦 Installation
-
+Install dependency:
 ```bash
 pip install requests
 
-Reconify
-Lightweight Security Awareness Tool
+```
+### 🧪 Sample Input
 
-Target reachable
-Status Code: 200
-Risk Level: LOW
+You can provide the target in any of the following formats:
 
-Checking common sensitive paths
-/admin not accessible
-/login not accessible
-/dashboard not accessible
+```text
+example.com
+https://example.com
+http://example.com
+
+---
+
+### 📊 Sample Output
+```text
+[+] Target Reachable: YES
+[+] HTTP Status Code: 200
+[+] Initial Risk Level: LOW
+
+/admin     → Not accessible
+/login     → Not accessible
+/dashboard → Not accessible
+
+✔ Overall Risk Assessment: LOW
+
+---
 
 ## ⚠️ Disclaimer
-This tool is created strictly for educational purposes.  
-Use it only on targets you own or have explicit permission to test.
+
+This tool is created **strictly for educational purposes**.
+
+Use it **only on targets you own** or where you have **explicit permission** to test.
+
+The author is **not responsible** for any misuse of this tool.
