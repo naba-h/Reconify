@@ -42,3 +42,7 @@ Checking common sensitive paths
 /admin not accessible
 /login not accessible
 /dashboard not accessible
+
+## ⚠️ Disclaimer
+This tool is created strictly for educational purposes.  
+Use it only on targets you own or have explicit permission to test.
