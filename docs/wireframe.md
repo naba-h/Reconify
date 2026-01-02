@@ -2,17 +2,19 @@
 
 ## Basic Flow
 
-1. User provides a target URL (authorized use only)
+1. User provides a target URL (**authorized use only**)
 2. Reconify checks website reachability
-3. Common sensitive endpoints are identified (e.g., /admin, /login, /dashboard)
+3. Common sensitive endpoints are identified  
+   (e.g., `/admin`, `/login`, `/dashboard`)
 4. Findings are categorized by risk level:
    - LOW
    - MEDIUM
    - HIGH
 5. Risks are explained in simple, non-technical language
-6. Safe and ethical security tools are suggested
+6. Safe and ethical security practices are suggested
 
-## Design Principle
+## Design Principles
+
 - Simple
 - Beginner-friendly
 - Ethical and non-intrusive
